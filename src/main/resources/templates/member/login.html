@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
+    <title>로그인</title>
+    <link th:href="@{/css/styles.css}" rel="stylesheet">
+</head>
+<body class="align-middle">
+    <div class="container-fluid d-flex justify-content-center" style="height:100vh">
+        <div class="card align-self-center">
+            <div class="card-header">
+                <h1>로그인</h1>
+            </div>
+            <div class="card-body">
+                <th:block th:if="${param.logout!=null}">
+                    <h1>로그아웃...</h1>
+                </th:block>
+                <form id="registerForm" action="/member/login" method="post" th:if="${param.logout==null}">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">아이디</span>
+                        <input type="text" name="username" class="form-control" placeholder="아이디">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">비밀번호</span>
+                        <input type="password" name="password" class="form-control" placeholder="비밀번호">
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="checkbox" class="form-check-input" name="remember-me">
+                        &nbsp;&nbsp;&nbsp;
+                        <label class="form-check-label">자동로그인</label>
+                    </div>
+                    <div class="my-4">
+                        <div class="d-flex" style="justify-content: space-around;">
+                            <button type="submit" class="btn btn-primary submitBtn">로그인</button>
+                            <a href="/oauth2/authorization/kakao" class="kakaoBtn" style="font-size:12px; width:180px; height:38px; text-decoration:none; border-radius:0.3rem; color:#111; background-color:#fae100; line-height:38px; font-weight:bold;">
+                                <img src="/assets/KakaoImg.png" alt="카카오톡 이미지" style="width:38px;">
+                                카카오톡으로 로그인
+                            </a>
+                        </div>
+                    </div>
+                </form>
+            </div><!--.card-body ends-->
+        </div><!--.card ends-->
+    </div><!--.container ends-->
+</body>
+</html>
